@@ -1,0 +1,473 @@
+INFO - pros.cli.common:callback - Debugging messages enabled - pros-cli version:3.4.3
+DEBUG - pros:callback - CLI Version: 3.4.3 - pros-cli version:3.4.3
+INFO - pros.conductor.project:find_project - Found Project Path: /Users/saahil.dutta/Developer/2023-24/kcd-vex-24/project/project.pros - pros-cli version:3.4.3
+INFO - pros.conductor.project:find_project - Found Project Path: /Users/saahil.dutta/Developer/2023-24/kcd-vex-24/project/project.pros - pros-cli version:3.4.3
+DEBUG - pros.config.config:__init__ - Opening /Users/saahil.dutta/Developer/2023-24/kcd-vex-24/project/project.pros (Project) - pros-cli version:3.4.3
+DEBUG - urllib3.connectionpool:_new_conn - Starting new HTTPS connection (1): www.google-analytics.com:443 - pros-cli version:3.4.3
+DEBUG - pros.serial.ports:list_all_comports - Connected: {'device': '/dev/cu.wlan-debug', 'name': 'cu.wlan-debug', 'description': 'n/a', 'hwid': 'n/a', 'vid': None, 'pid': None, 'serial_number': None, 'location': None, 'manufacturer': None, 'product': None, 'interface': None};{'device': '/dev/cu.Bluetooth-Incoming-Port', 'name': 'cu.Bluetooth-Incoming-Port', 'description': 'n/a', 'hwid': 'n/a', 'vid': None, 'pid': None, 'serial_number': None, 'location': None, 'manufacturer': None, 'product': None, 'interface': None};{'device': '/dev/cu.usbmodem11303', 'name': 'cu.usbmodem11303', 'description': 'VEX Robotics V5 Brain - AA5C4800', 'hwid': 'USB VID:PID=2888:0501 LOCATION=1-1.3', 'vid': 10376, 'pid': 1281, 'serial_number': None, 'location': '1-1.3', 'manufacturer': 'VEX Robotics, Inc', 'product': 'VEX Robotics V5 Brain - AA5C4800', 'interface': None};{'device': '/dev/cu.usbmodem11301', 'name': 'cu.usbmodem11301', 'description': 'VEX Robotics V5 Brain - AA5C4800', 'hwid': 'USB VID:PID=2888:0501 LOCATION=1-1.3', 'vid': 10376, 'pid': 1281, 'serial_number': None, 'location': '1-1.3', 'manufacturer': 'VEX Robotics, Inc', 'product': 'VEX Robotics V5 Brain - AA5C4800', 'interface': None} - pros-cli version:3.4.3
+INFO - pros.cli.common:resolve_v5_port - Automatically selected /dev/cu.usbmodem11301 - pros-cli version:3.4.3
+DEBUG - pros.cli.upload:upload - Arguments: {'icon': 'USER001x.bmp', 'description': 'Made with PROS', 'target': 'v5', 'run_after': <FTCompleteOptions.RUN_SCREEN: 3>, 'quirk': 0, 'remote_name': "KCD VEX '24", 'slot': 0, 'program_version': None, 'ini_config': None, 'compress_bin': True, 'name': None, 'ide_version': '3.8.0', 'ide': 'PROS'} - pros-cli version:3.4.3
+DEBUG - pros.serial.ports.direct_port:create_serial_port - Opening serial port /dev/cu.usbmodem11301 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:upload_project - Hot and cold files exist! (/Users/saahil.dutta/Developer/2023-24/kcd-vex-24/project/bin/hot.package.bin; /Users/saahil.dutta/Developer/2023-24/kcd-vex-24/project/bin/cold.package.bin) - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:get_system_status - Sending ext 0x22 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:get_system_status - Sending ext 0x22 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:get_system_status - Sending ext 0x22 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:get_system_status - Sending ext 0x22 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Sending simple 0xA408 command - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_tx_packet - V5Device TX: C9 36 B8 47 A4 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.vex_device:_txrx_packet - TX:C9 36 B8 47 A4	RX:AA 55 A4 08 01 01 02 00 00 10 03 00 - pros-cli version:3.4.3
+DEBUG - pros.serial.devices.vex.v5_device:query_system_version - Completed simple 0xA408 command - pros-cli version:3.4.3
+ERROR - pros.cli.upload:upload - <flag 'BrainFlags'> has no members defined - pros-cli version:3.4.3
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 836, in get_system_status
+    version = self.query_system_version()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 55, in retries_wrapper
+    raise e
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 836, in get_system_status
+    version = self.query_system_version()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 55, in retries_wrapper
+    raise e
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 836, in get_system_status
+    version = self.query_system_version()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 55, in retries_wrapper
+    raise e
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no members defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/cli/upload.py", line 150, in upload
+    device.upload_project(project, **kwargs)
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 259, in upload_project
+    kwargs['linked_remote_name'] = self.generate_cold_hash(project, {})
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 227, in generate_cold_hash
+    if Spec('<=1.0.0-27').match(self.status['cpu0_version']):
+                                ^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 207, in status
+    self._status = self.get_system_status()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 55, in retries_wrapper
+    raise e
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 836, in get_system_status
+    version = self.query_system_version()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 53, in retries_wrapper
+    return retries_wrapper(*args, n_retries=n_retries - 1, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 55, in retries_wrapper
+    raise e
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/common/utils.py", line 50, in retries_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 623, in query_system_version
+    return V5Device.SystemVersion(ret)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/pros-cli/3.4.3/libexec/lib/python3.11/site-packages/pros/serial/devices/vex/v5_device.py", line 144, in __init__
+    self.product_flags = self.flag_map[self.product](data[6])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.6/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1115, in __new__
+    raise TypeError("%r has no members defined" % cls)
+TypeError: <flag 'BrainFlags'> has no me        7 mbers defined
+We detected something went wrong! Do you want to send a report? [y/N]: DEBUG - urllib3.connectionpool:_make_request - https://www.google-analytics.com:443 "POST /collect HTTP/1.1" 200 35 - pros-cli version:3.4.3
+Not sending bug report.
