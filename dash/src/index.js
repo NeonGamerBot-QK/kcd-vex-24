@@ -5,6 +5,7 @@ const path = require('path');
 const c = require('child_process')
 const fs = require('fs')
 const morgan = require('morgan');
+const { getProjectPath } = require('./util');
 const checkPros = () => {
     try {
        c.execSync('pros');
@@ -21,8 +22,11 @@ console.log('\nNO PROS INSTALLED\n')
    }
 }
 checkPros()
+console.log(`Using project path: ${getProjectPath()}`)
 app.use(morgan('dev'));
 app.use(express.static('public'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use('/api', require('./routes/api'));
 app.get('/', (req, res) => res.render('index'));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

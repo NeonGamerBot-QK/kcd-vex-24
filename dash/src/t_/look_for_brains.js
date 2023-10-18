@@ -1,4 +1,3 @@
-const { execSync } = require('child_process')
 
 // Path: dash/src/t_/read_brain_data.js
 // Compare this snippet from dash/src/index.js:
@@ -8,7 +7,7 @@ if (rawData.every(e => e.includes('There are no connected'))) {
     process.exit();
 }
 
-
+console.log(rawData)
 
 
 

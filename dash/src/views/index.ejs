@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vex Robotics dash board</title>
+
+<link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.3/dist/full.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/styles/default.min.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/languages/go.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+</head>
+
+<body>
+    <% 
+    const buttons = [
+    "upload",
+    "build",
+    "upload_build",
+    "list_brains",
+    ]
+    const b_meta = {
+        "upload": {
+        title: "Upload",
+        req: "/api/upload", 
+    },
+    "build":  {
+        title: "Build",
+        req: "/api/build",
+    },
+    "upload_build":
+    {
+        title: "Upload & Build",
+        req: "/api/upload_build",
+    },
+    "list_brains": {
+        title: "List Brains",
+        req: "/api/brains",
+    },
+}
+    %>
+    <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content text-center">
+          <div class="max-w-xl">
+         
+            <h1 class="text-5xl font-bold">Vex bot</h1>
+            <p class="py-6">You should use this if you are my team or if ur the lazy coder.</p>
+            
+            <div class="max-w-sm border rounded-lg shadow-lg text-center">
+                <div class="form-control">
+                    <label class="label cursor-pointer">
+                      <span class="label-text">Debug</span> 
+                      <input type="checkbox" name='debug' id='debug' class="checkbox checkbox-primary" />
+                    </label>
+                  </div>
+                  <div class="form-control">
+                    <label class="label cursor-pointer">
+                      <span class="label-text">Verbose</span> 
+                      <input type="checkbox" name='verbose' id='verbose' class="checkbox checkbox-primary" />
+                    </label>
+                  </div>
+            </div>
+            <hr />
+            <% buttons.forEach(b => { %>
+             <button class="btn btn-primary m-4" id="<%=b%>"><%=b_meta[b].title%></button> 
+            <!-- <button class="btn btn-primary mb-4">Upload</button> -->
+            <!-- <button class="btn btn-primary">Build</button> -->
+            <!-- <button class="btn btn-primary">Upload & Build</button> -->
+            <!-- <button class="btn btn-primary ">List Brains</button> -->
+    <% }) %> 
+
+          </div>
+        </div>
+      </div>
+      <div id="modals">
+        <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+<% buttons.forEach(b => { %>
+    <dialog id="my_modal_<%=b%>" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box max-w-5xl">
+          <h3 id="my_modal_<%=b%>_title" class="font-bold text-lg"></h3>
+          <p>
+            <pre id="my_modal_<%=b%>_desc" class="mockup-code">
+
+            </pre>
+          </p>
+          <div class="modal-action">
+            <button class="btn"  id="my_modal_<%=b%>_download">Download</button>
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    <% }) %> 
+<script>
+    const buttons = "<%= buttons.join(',,') %>".split(",,");
+    const b_meta = {
+        "upload": {
+        title: "Upload",
+        req: "/api/upload",
+        method: "POST"
+
+    },
+    "build":  {
+        title: "Build",
+        req: "/api/make",
+        method: "POST"
+
+    },
+    "upload_build":
+    {
+        title: "Upload & Build",
+        req: "/api/upload_build",
+        method: "POST"
+
+    },
+    "list_brains": {
+        title: "List Brains",
+        req: "/api/brains",
+    },
+}
+
+    buttons.forEach((b) => {
+        const meta = b_meta[b]
+        const modal = document.getElementById(`my_modal_${b}`)
+        const title = document.getElementById(`my_modal_${b}_title`)
+        const desc = document.getElementById(`my_modal_${b}_desc`)
+        const dbtn = document.getElementById(`my_modal_${b}_download`)
+        title.innerHTML = meta.title + " Output"
+        desc.innerHTML = "Loading..."
+        const btn = document.getElementById(b)
+        btn.onclick = async (e) => {
+            const querys = new URLSearchParams()
+            if(document.getElementById('verbose').checked) querys.append('verbose', true)
+            if(document.getElementById('debug').checked) querys.append('debug', true)
+            const fInfo = await fetch(meta.req + `?${querys.toString()}`, {
+                method: meta.method || "GET"
+            })
+            const t = await fInfo.text()
+dbtn.onclick = () => {
+    const blob = new Blob([t], {
+  type: "application/plain",
+});
+const a = document.createElement("a");
+a.href = URL.createObjectURL(blob);
+a.download = `${meta.title}_output_${Date.now()}.txt`;
+a.click();
+a.remove();
+}
+                desc.innerHTML = 
+                    t.split('\n').map((e,i) => fInfo.status !== 500 ? `<pre data-prefix="${i}" class="${e.startsWith('INFO') ? `bg-info text-info-content`: e.startsWith('DEBUG') ? `bg-primary text-primary-content` : e.startsWith('ERROR') ? `bg-error text-error-content` : ''}"><code>${e}</code></pre>` : `<pre data-prefix="${i}" class="${e.startsWith('INFO') ? `bg-info text-info-content`: e.startsWith('DEBUG') ? `bg-primary text-primary-content` : e.startsWith('ERROR') ? `bg-error text-error-content` : 'bg-error text-error-content'}"><code>${e}</code></pre>`).join('\n')
+                
+                modal.showModal()
+            
+        }
+        
+    })
+</script>
+      </div>
+</body>
+</html>
