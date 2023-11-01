@@ -36,6 +36,9 @@
  */
 void initialize() {
 	pros::lcd::initialize();
+	  display::initializeAutonSelect();
+	    display::initializeField();
+  display::initializeInformation();
 	pros::lcd::set_text(1, "[init]");
 
 	// pros::lcd::register_btn1_cb(on_center_button);
