@@ -1,5 +1,5 @@
 #include "main.h"
-#include "okapi/api/device/motor/abstractMotor.hpp"
+// #include "okapi/api/device/motor/abstractMotor.hpp"
 #include "okapi/impl/chassis/controller/chassisControllerBuilder.hpp"
 // USE https://okapilib.github.io/OkapiLib/md_docs_tutorials_walkthrough_clawbot.html
 // #include <iostream>
@@ -22,12 +22,12 @@
 // 		pros::lcd::clear_line(2);
 // 	}
 // }
-std::shared_ptr<okapi::ChassisController> chassis = okapi::ChassisControllerBuilder()
-    .withMotors(
-        {1, 2,3}, // Left motors are 1 & 2 (reversed)
-        {4,5,6}    // Right motors are 3 & 4
-    )
-	.build();
+// std::shared_ptr<okapi::ChassisController> chassis = okapi::ChassisControllerBuilder()
+//     .withMotors(
+//         {3,4}, // Left motors are 1 & 2 (reversed)
+//         {1,2}    // Right motors are 3 & 4
+//     )
+// 	.build();
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -93,12 +93,12 @@ void autonomous() {
  */
 void opcontrol() {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	// pros::Motor left_mtr(1);
-	// pros::Motor left_mtr2(2);
-	// pros::Motor left_mtr3(3);
-	// pros::Motor right_mtr(4);
-	// pros::Motor right_mtr2(5);
-	// pros::Motor right_mtr3(6);
+	pros::Motor left_mtr(1);
+	pros::Motor left_mtr2(2);
+	pros::Motor left_mtr3(3);
+	pros::Motor right_mtr(4);
+	pros::Motor right_mtr2(5);
+	pros::Motor right_mtr3(6);
  
 
 	while (true) {
@@ -108,14 +108,14 @@ void opcontrol() {
 		int left = master.get_analog(ANALOG_LEFT_Y);
 		int right = master.get_analog(ANALOG_RIGHT_Y);
 		// chassis.moveRaw(left)
-		chassis->getModel()->tank(left,right);
+		// chassis->getModel()->tank(left,right);
 		// chassis->getModel()->arcade(left,right);
-		// left_mtr = left;
-		// left_mtr2 = left;
-		// left_mtr3 = left;
-		// right_mtr = right;
-		// right_mtr2 = right;
-		// right_mtr3 = right;
+		left_mtr = left;
+		left_mtr2 = left;
+		left_mtr3 = left;
+		right_mtr = right;
+		right_mtr2 = right;
+		right_mtr3 = right;
 
 		pros::delay(10);
 	}
