@@ -36,9 +36,9 @@
  */
 void initialize() {
 	pros::lcd::initialize();
-	  display::initializeAutonSelect();
-	    display::initializeField();
-  display::initializeInformation();
+	//   display::initializeAutonSelect();
+	    // display::initializeField();
+//   display::initializeInformation();
 	pros::lcd::set_text(1, "[init]");
 
 	// pros::lcd::register_btn1_cb(on_center_button);
@@ -98,10 +98,8 @@ void opcontrol() {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 	pros::Motor left_mtr(1);
 	pros::Motor left_mtr2(2);
-	pros::Motor left_mtr3(3);
-	pros::Motor right_mtr(4);
-	pros::Motor right_mtr2(5);
-	pros::Motor right_mtr3(6);
+	pros::Motor right_mtr(3);
+	pros::Motor right_mtr2(4);
  
 
 	while (true) {
@@ -113,12 +111,10 @@ void opcontrol() {
 		// chassis.moveRaw(left)
 		// chassis->getModel()->tank(left,right);
 		// chassis->getModel()->arcade(left,right);
-		left_mtr = left;
+		left_mtr = -left;
 		left_mtr2 = left;
-		left_mtr3 = left;
 		right_mtr = right;
-		right_mtr2 = right;
-		right_mtr3 = right;
+		right_mtr2 = -right;
 
 		pros::delay(10);
 	}
