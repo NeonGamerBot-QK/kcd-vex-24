@@ -1,0 +1,2 @@
+void DfieldTask();
+void DinitializeField();

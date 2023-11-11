@@ -1,4 +1,7 @@
 #include "main.h"
+#include "screen/info.hpp"
+#include "screen/images.hpp"
+// #include "test.cpp"
 // #include "okapi/api/device/motor/abstractMotor.hpp"
 #include "okapi/impl/chassis/controller/chassisControllerBuilder.hpp"
 // USE https://okapilib.github.io/OkapiLib/md_docs_tutorials_walkthrough_clawbot.html
@@ -13,15 +16,17 @@
  * When this callback is fired, it will toggle line 2 of the LCD text between
  * "I was pressed!" and nothing.
  */
-// void on_center_button() {
-// 	static bool pressed = false;
-// 	pressed = !pressed;
-// 	if (pressed) {
-// 		pros::lcd::set_text(2, "I was pressed!");
-// 	} else {
-// 		pros::lcd::clear_line(2);
-// 	}
-// }
+void on_center_button() {
+	static bool pressed = false;
+	pressed = !pressed;
+	if (pressed) {
+		// pros::lcd::set_text(2, "I was pressed!");
+		// TestFunc();
+	} else {
+		// pros::lcd::clear_line(2);
+		// StopTestFunc();
+	}
+}
 // std::shared_ptr<okapi::ChassisController> chassis = okapi::ChassisControllerBuilder()
 //     .withMotors(
 //         {3,4}, // Left motors are 1 & 2 (reversed)
@@ -35,13 +40,16 @@
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	pros::lcd::initialize();
+	// pros::lcd::initialize();
+	DinitializeInformation();
+	DinitializeField();
 	//   display::initializeAutonSelect();
 	    // display::initializeField();
 //   display::initializeInformation();
 	pros::lcd::set_text(1, "[init]");
-
-	// pros::lcd::register_btn1_cb(on_center_button);
+	// pros::lcd::set_text_color(COLOR_GREEN_YELLOW);
+	pros::lcd::set_text(2, "made by saahil (https://saahild.com)");
+	pros::lcd::register_btn1_cb(on_center_button);
 }
 
 /**
@@ -72,7 +80,7 @@ void competition_initialize() {
  * the Field Management System or the VEX Competition Switch in the autonomous
  * mode. Alternatively, this function may be called in initialize or opcontrol
  * for non-competition testing purposes.
- *
+ *bb
  * If the robot is disabled or communications is lost, the autonomous task
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.

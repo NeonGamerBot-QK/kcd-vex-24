@@ -1,0 +1,2 @@
+void DinitializeInformation();
+void DinformationTask();
