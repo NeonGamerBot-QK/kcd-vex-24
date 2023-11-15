@@ -21,9 +21,6 @@ lv_obj_t *robotImage = lv_img_create(lv_scr_act(), NULL);
 // text label
 lv_obj_t *textArea = lv_label_create(lv_scr_act(), NULL);
 
-// create the image
-
-
 // utility function to turn inches into pixels
 int inchesToPixels(double inches) { return inches / REAL_WIDTH * IMAGE_WIDTH; }
 
@@ -35,8 +32,8 @@ void DfieldTask() {
     // auto state = odom::getState();
 
     // turn the position into pixels
-    int x = 100;
-    int y = -1 * 100;
+    int x = 1;
+    int y = -1 * 1;
 
     // 0,0 is the center of the image
     // so we need to offset it
@@ -61,6 +58,9 @@ void DfieldTask() {
 
 
 void DinitializeField() {
+  std::cout << "ptr is at: " << field.data << std::endl;
+  // std::cout << robot << std::endl;
+
   // set the image
   lv_img_set_src(fieldImage, &field);
   lv_img_set_src(robotImage, &robot);
@@ -74,7 +74,9 @@ void DinitializeField() {
   // set the size
   lv_obj_set_size(fieldImage, IMAGE_WIDTH, IMAGE_WIDTH);
   lv_obj_set_size(robotImage, 15, 15);
-  DfieldTask();
+
+  pros::Task fieldTask(DfieldTask);
+  // DfieldTask();
   // create the task
 //   Task fieldTask(display::fieldTask);
 }

@@ -56,7 +56,10 @@ void DinformationTask() {
 void DinitializeInformation() {
   // goes to the right of the field
   lv_obj_set_pos(informationTextLabel, 200, 0);
-  DinformationTask();
+  // DinformationTask();
+
+  pros::Task infoTask(DinformationTask);
+
   // create the task
 //   Task informationTask(display::informationTask);
 }
