@@ -1,6 +1,7 @@
 #include "main.h"
 #include "screen/info.hpp"
 #include "screen/images.hpp"
+#include "screen/logs.hpp"
 // #include "test.cpp"
 // #include "okapi/api/device/motor/abstractMotor.hpp"
 #include "okapi/impl/chassis/controller/chassisControllerBuilder.hpp"
@@ -43,6 +44,7 @@ void initialize() {
 	// pros::lcd::initialize();
 	DinitializeInformation();
 	DinitializeField();
+	DLogsTask();
 	//   display::initializeAutonSelect();
 	    // display::initializeField();
 //   display::initializeInformation();
@@ -120,9 +122,14 @@ void opcontrol() {
 		// chassis->getModel()->tank(left,right);
 		// chassis->getModel()->arcade(left,right);
 		left_mtr = -left;
-		left_mtr2 = left;
+		left_mtr2 = -left;
 		right_mtr = right;
-		right_mtr2 = -right;
+		right_mtr2 = right;
+		// x = 
+		DAppendLogs("for loop thiing");
+		DAppendLogs("for loop thiing2");
+		DAppendLogs("for loop thiing3");
+		DAppendLogs("for loop thiing4");
 
 		pros::delay(10);
 	}
