@@ -2,9 +2,12 @@
 #include "screen/info.hpp"
 #include "screen/images.hpp"
 #include "screen/logs.hpp"
+#include "auton/auton.hpp"
+#include "screen/auton_select.hpp"
 // #include "test.cpp"
 // #include "okapi/api/device/motor/abstractMotor.hpp"
 #include "okapi/impl/chassis/controller/chassisControllerBuilder.hpp"
+#include "../include/pros/misc.h"
 // USE https://okapilib.github.io/OkapiLib/md_docs_tutorials_walkthrough_clawbot.html
 // #include <iostream>
 // #include <fstream> 
@@ -44,14 +47,16 @@ void initialize() {
 	// pros::lcd::initialize();
 	DinitializeInformation();
 	DinitializeField();
-	DLogsTask();
+	DinitializeAutonSelect();
+	// runAuton();
+	// DLogsTask(); //currently broken
 	//   display::initializeAutonSelect();
 	    // display::initializeField();
 //   display::initializeInformation();
-	pros::lcd::set_text(1, "[init]");
+	// pros::lcd::set_text(1, "[init]");
 	// pros::lcd::set_text_color(COLOR_GREEN_YELLOW);
-	pros::lcd::set_text(2, "made by saahil (https://saahild.com)");
-	pros::lcd::register_btn1_cb(on_center_button);
+	// pros::lcd::set_text(2, "made by saahil (https://saahild.com)");
+	// pros::lcd::register_btn1_cb(on_center_button);
 }
 
 /**
@@ -89,6 +94,7 @@ void competition_initialize() {
  */
 void autonomous() {
 		pros::lcd::set_text(1, "[autonomous]");
+		runAuton();
 }
 
 /**
@@ -121,16 +127,22 @@ void opcontrol() {
 		// chassis.moveRaw(left)
 		// chassis->getModel()->tank(left,right);
 		// chassis->getModel()->arcade(left,right);
+		if(master.get_digital(pros::E_CONTROLLER_DIGITAL_A) && master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+			autonomous();
+			master.rumble("-");	
+
+		}
+
 		left_mtr = -left;
 		left_mtr2 = -left;
 		right_mtr = right;
 		right_mtr2 = right;
-		// x = 
-		DAppendLogs("for loop thiing");
-		DAppendLogs("for loop thiing2");
-		DAppendLogs("for loop thiing3");
-		DAppendLogs("for loop thiing4");
-
+		// // x = 
+		// DAppendLogs("for loop thiing"); //broken below
+		// DAppendLogs("for loop thiing2");
+		// DAppendLogs("for loop thiing3");
+		// DAppendLogs("for loop thiing4");
+		
 		pros::delay(10);
 	}
 }

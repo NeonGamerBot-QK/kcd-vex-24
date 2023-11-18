@@ -314,7 +314,8 @@
     },
     "upload_options": {
       "icon": "X",
-      "description": "Vex robotics '24"
+      "description": "Vex robotics '24",
+      "after": "screen"
     }
   }
 }
