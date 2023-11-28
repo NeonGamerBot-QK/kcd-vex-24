@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>My Team</title>
+
+  <!-- PrismJS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-coy.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.css" />
+<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+
+  <style>
+@font-face {
+    font-family: IosevkaComfy;
+    src: url("https://github.com/protesilaos/iosevka-comfy/raw/master/iosevka-comfy/ttf/iosevka-comfy-regular.ttf");
+}
+    body {
+      font-family: 'Raleway';
+      margin: 0;
+      padding: 8px;
+    }
+    pre {
+      margin: 0;
+      font-family: IosevkaComfy;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    h1 {
+      margin-top: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+
+    pre[class*="language-"] {
+      max-height: inherit !important;
+      overflow: hidden !important;
+
+      box-shadow: none !important;
+      border-left: none !important;
+    }
+
+    code[class*="language"] {
+      overflow: hidden !important;
+    }
+  </style>
+</head>
+<body>
+<h1>./project/src/config.hpp</h1>
+<p><strong>Last commit:</strong> feat(intake): intake & config (2023-11-18)</p>
+<pre><code class="language-cpp line-numbers">
+/**
+ * Config
+*/
+#define LEFT_MTR_1_PORT 1 
+#define LEFT_MTR_2_PORT 2 
+#define RIGHT_MTR_1_PORT 3 
+#define RIGHT_MTR_2_PORT 4 
+
+#define INTAKE_PORT 6</code></pre>
+<h1>./project/src/main.cpp</h1>
+<p><strong>Last commit:</strong> feat(screen): updated screen to work properly and throughly (2023-11-18)</p>
+<pre><code class="language-cpp line-numbers">
+#include &quot;main.h&quot;
+#include &quot;screen/info.hpp&quot;
+#include &quot;screen/images.hpp&quot;
+#include &quot;screen/logs.hpp&quot;
+#include &quot;auton/auton.hpp&quot;
+#include &quot;screen/auton_select.hpp&quot;
+// #include &quot;test.cpp&quot;
+// #include &quot;okapi/api/device/motor/abstractMotor.hpp&quot;
+#include &quot;okapi/impl/chassis/controller/chassisControllerBuilder.hpp&quot;
+#include &quot;../include/pros/misc.h&quot;
+// USE https://okapilib.github.io/OkapiLib/md_docs_tutorials_walkthrough_clawbot.html
+// #include &lt;iostream&gt;
+// #include &lt;fstream&gt; 
+// ofstream MyFile(&quot;filename.txt&quot;);
+// #include &lt;CkHttp.h&gt;
+// #include &lt;CkJsonObject.h&gt;
+/**
+ * A callback function for LLEMU&#39;s center button.
+ *
+ * When this callback is fired, it will toggle line 2 of the LCD text between
+ * &quot;I was pressed!&quot; and nothing.
+ */
+void on_center_button() {
+	static bool pressed = false;
+	pressed = !pressed;
+	if (pressed) {
+		// pros::lcd::set_text(2, &quot;I was pressed!&quot;);
+		// TestFunc();
+	} else {
+		// pros::lcd::clear_line(2);
+		// StopTestFunc();
+	}
+}
+// std::shared_ptr&lt;okapi::ChassisController&gt; chassis = okapi::ChassisControllerBuilder()
+//     .withMotors(
+//         {3,4}, // Left motors are 1 &amp; 2 (reversed)
+//         {1,2}    // Right motors are 3 &amp; 4
+//     )
+// 	.build();
+/**
+ * Runs initialization code. This occurs as soon as the program is started.
+ *
+ * All other competition modes are blocked by initialize; it is recommended
+ * to keep execution time for this mode under a few seconds.
+ */
+void initialize() {
+	// pros::lcd::initialize();
+	DinitializeInformation();
+	DinitializeField();
+	DinitializeAutonSelect();
+	// runAuton();
+	// DLogsTask(); //currently broken
+	//   display::initializeAutonSelect();
+	    // display::initializeField();
+//   display::initializeInformation();
+	// pros::lcd::set_text(1, &quot;[init]&quot;);
+	// pros::lcd::set_text_color(COLOR_GREEN_YELLOW);
+	// pros::lcd::set_text(2, &quot;made by saahil (https://saahild.com)&quot;);
+	// pros::lcd::register_btn1_cb(on_center_button);
+}
+
+/**
+ * Runs while the robot is in the disabled state of Field Management System or
+ * the VEX Competition Switch, following either autonomous or opcontrol. When
+ * the robot is enabled, this task will exit.
+ */
+void disabled() {
+		pros::lcd::set_text(1, &quot;[disabled]&quot;);
+}
+
+/**
+ * Runs after initialize(), and before autonomous when connected to the Field
+ * Management System or the VEX Competition Switch. This is intended for
+ * competition-specific initialization routines, such as an autonomous selector
+ * on the LCD.
+ *
+ * This task will exit when the robot is enabled and autonomous or opcontrol
+ * starts.
+ */
+void competition_initialize() {
+		pros::lcd::set_text(1, &quot;[init comp]&quot;);
+}
+
+/**
+ * Runs the user autonomous code. This function will be started in its own task
+ * with the default priority and stack size whenever the robot is enabled via
+ * the Field Management System or the VEX Competition Switch in the autonomous
+ * mode. Alternatively, this function may be called in initialize or opcontrol
+ * for non-competition testing purposes.
+ *bb
+ * If the robot is disabled or communications is lost, the autonomous task
+ * will be stopped. Re-enabling the robot will restart the task, not re-start it
+ * from where it left off.
+ */
+void autonomous() {
+		pros::lcd::set_text(1, &quot;[autonomous]&quot;);
+		runAuton();
+}
+
+/**
+ * Runs the operator control code. This function will be started in its own task
+ * with the default priority and stack size whenever the robot is enabled via
+ * the Field Management System or the VEX Competition Switch in the operator
+ * control mode.
+ *
+ * If no competition control is connected, this function will run immediately
+ * following initialize().
+ *
+ * If the robot is disabled or communications is lost, the
+ * operator control task will be stopped. Re-enabling the robot will restart the
+ * task, not resume it from where it left off.
+ */
+void opcontrol() {
+	pros::Controller master(pros::E_CONTROLLER_MASTER);
+	pros::Motor left_mtr(1);
+	pros::Motor left_mtr2(2);
+	pros::Motor right_mtr(3);
+	pros::Motor right_mtr2(4);
+ 
+
+	while (true) {
+		pros::lcd::print(0, &quot;%d %d %d&quot;, (pros::lcd::read_buttons() &amp; LCD_BTN_LEFT) &gt;&gt; 2,
+		                 (pros::lcd::read_buttons() &amp; LCD_BTN_CENTER) &gt;&gt; 1,
+		                 (pros::lcd::read_buttons() &amp; LCD_BTN_RIGHT) &gt;&gt; 0);
+		int left = master.get_analog(ANALOG_LEFT_Y);
+		int right = master.get_analog(ANALOG_RIGHT_Y);
+		// chassis.moveRaw(left)
+		// chassis-&gt;getModel()-&gt;tank(left,right);
+		// chassis-&gt;getModel()-&gt;arcade(left,right);
+		if(master.get_digital(pros::E_CONTROLLER_DIGITAL_A) &amp;&amp; master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+			autonomous();
+			master.rumble(&quot;-&quot;);	
+
+		}
+
+		left_mtr = -left;
+		left_mtr2 = -left;
+		right_mtr = right;
+		right_mtr2 = right;
+		// // x = 
+		// DAppendLogs(&quot;for loop thiing&quot;); //broken below
+		// DAppendLogs(&quot;for loop thiing2&quot;);
+		// DAppendLogs(&quot;for loop thiing3&quot;);
+		// DAppendLogs(&quot;for loop thiing4&quot;);
+		
+		pros::delay(10);
+	}
+}
+</code></pre>
+<h1>./project/src/test.cpp</h1>
+<p><strong>Last commit:</strong> Done (2023-11-11)</p>
+<pre><code class="language-cpp line-numbers">
+#include &quot;main.h&quot;
+void TestFunc() {
+    pros::screen::set_pen(COLOR_RED);
+    pros::screen::print(TEXT_SMALL,4,&quot;huh&quot;);
+}
+
+void StopTestFunc() {
+
+}</code></pre>
+<h1>./project/src/auton/auton.cpp</h1>
+<p><strong>Last commit:</strong> feat(screen): updated screen to work properly and throughly (2023-11-18)</p>
+<pre><code class="language-cpp line-numbers">
+#include &quot;main.h&quot;
+pros::Motor right_mtr(1);
+int autonMode = -1;
+void runAuton() {
+right_mtr = 127;
+pros::delay(500);
+right_mtr.brake();
+}
+
+
+void resetAuton() {
+    right_mtr.brake();
+    pros::delay(20);
+}
+
+void setAutonMode(int mode) {
+    autonMode = mode;
+}</code></pre>
+<h1>./project/src/intake/intake.cpp</h1>
+<p><strong>Last commit:</strong> feat(intake): intake & config (2023-11-18)</p>
+<pre><code class="language-cpp line-numbers">
+#include &quot;main.h&quot;
+pros::Motor intake_mtr (6);
+void Moveintake() {
+
+}
+
+void StopIntake() {
+
+}</code></pre>
+<h1>./project/src/screen/auton_select.cpp</h1>
+<p><strong>Last commit:</strong> feat(screen): updated screen to work properly and throughly (2023-11-18)</p>
+<pre><code class="language-cpp line-numbers">
+// #include &quot;../autonomous/auton.hpp&quot;
+// #include &quot;../config/config.hpp&quot;
+#include &quot;main.h&quot;
+#include &quot;auton/auton.hpp&quot;
+// #include &quot;screen.hpp&quot;
+
+// create the menu
+lv_obj_t *autonMenu = lv_ddlist_create(lv_scr_act(), NULL);
+lv_style_t style_list;
+
+// reset position button
+lv_obj_t *resetPositionButton = lv_btn_create(lv_scr_act(), NULL);
+lv_obj_t *resetPositionLabel = lv_label_create(resetPositionButton, NULL);
+
+// reset turret button
+lv_obj_t *resetTurretButton = lv_btn_create(lv_scr_act(), NULL);
+lv_obj_t *resetTurretLabel = lv_label_create(resetTurretButton, NULL);
+
+// button callback
+static lv_res_t resetPositionCallback(lv_obj_t *btn) {
+  // reset the position
+ resetAuton();
+
+  // return
+  return LV_RES_OK;
+}
+
+// turret callback
+// static lv_res_t resetTurretCallback(lv_obj_t *btn) {
+//   // reset the position
+//   turret_rot-&gt;reset();
+
+//   // return
+//   return LV_RES_OK;
+// }
+// task
+void DautonSelectTask() {
+  while (true) {
+    // get the selected option
+    int selected = lv_ddlist_get_selected(autonMenu);
+
+    // set the auton - corresponds to the enum&#39;s value
+
+    // auton::setAutonMode((auton::AutonMode)selected);
+    setAutonMode(selected);
+    /// wait
+    pros::delay(20);
+  }
+}
+// initailize the menu
+void DinitializeAutonSelect() {
+  // set the options
+  lv_ddlist_set_options(autonMenu, &quot;Red Side\nBlue side\nSkills\nNone&quot;);
+  // set the button text
+  lv_label_set_text(resetPositionLabel, &quot;Reset Position&quot;);
+  lv_label_set_text(resetTurretLabel, &quot;Reset Turret&quot;);
+
+  // set the position
+  lv_obj_set_pos(autonMenu, 200, 150);
+  lv_obj_set_pos(resetPositionButton, 204, 90);
+  lv_obj_set_pos(resetTurretButton, 204, 210);
+
+  // set the size
+  lv_obj_set_size(autonMenu, 200, 50);
+  lv_btn_set_fit(resetPositionButton, true, true);
+  lv_btn_set_fit(resetTurretButton, true, true);
+
+  // reduce the padding to 3 px
+  lv_style_copy(&amp;style_list, &amp;lv_style_plain);
+  style_list.body.padding.hor = 3;
+  style_list.body.padding.ver = 3;
+  style_list.body.padding.inner = 3;
+  lv_ddlist_set_style(autonMenu, LV_DDLIST_STYLE_BG, &amp;style_list);
+  lv_btn_set_style(resetPositionButton, LV_BTN_STYLE_REL, &amp;style_list);
+  lv_btn_set_style(resetTurretButton, LV_BTN_STYLE_REL, &amp;style_list);
+
+  // on click
+  lv_btn_set_action(resetPositionButton, LV_BTN_ACTION_CLICK,
+                    resetPositionCallback);
+//   lv_btn_set_action(resetTurretButton, LV_BTN_ACTION_CLICK,
+                    // resetTurretCallback);
+
+  // create the task
+  pros::Task autonMenuTask(DautonSelectTask);
+}
+
+</code></pre>
+<h1>./project/src/screen/images.cpp</h1>
+<p><strong>Last commit:</strong> idek (2023-11-15)</p>
+<pre><code class="language-cpp line-numbers">
+// #include &quot;../config/config.hpp&quot;
+// #include &quot;../odom/odom.hpp&quot;
+#include &quot;display/lv_objx/lv_img.h&quot;
+// #include &quot;screen.hpp&quot;
+#include &quot;main.h&quot;
+// #include &quot;images/field.c&quot;
+// #include &quot;images/robot.c&quot;
+// draws the field as an image
+// then draws a dot representign the robot&#39;s position
+LV_IMG_DECLARE(field);
+LV_IMG_DECLARE(robot);
+
+// constants
+const int IMAGE_WIDTH = 200;
+const double REAL_WIDTH = 147.8377757;
+
+// create images
+lv_obj_t *fieldImage = lv_img_create(lv_scr_act(), NULL);
+lv_obj_t *robotImage = lv_img_create(lv_scr_act(), NULL);
+
+// text label
+lv_obj_t *textArea = lv_label_create(lv_scr_act(), NULL);
+
+// utility function to turn inches into pixels
+int inchesToPixels(double inches) { return inches / REAL_WIDTH * IMAGE_WIDTH; }
+
+// draws the robot&#39;s position on the field
+void DfieldTask() {
+  while (true) {
+    // get the robot&#39;s position
+    // auto state = chassis-&gt;getPose();
+    // auto state = odom::getState();
+
+    // turn the position into pixels
+    int x = 1;
+    int y = -1 * 1;
+
+    // 0,0 is the center of the image
+    // so we need to offset it
+    x += IMAGE_WIDTH / 2;
+    y += IMAGE_WIDTH / 2;
+
+    // set the position
+    lv_obj_set_pos(robotImage, x, y);
+
+    // build text
+    std::string text = &quot;x: &quot; + std::to_string(100) +
+                       &quot; y: &quot; + std::to_string(100);
+                    //    &quot;\nangle: &quot; + std::to_string(state.theta);
+
+    // set the text
+    lv_label_set_text(textArea, text.c_str());
+
+    // delay for 100ms (10Hz)
+    pros::delay(100);
+  }
+}
+
+
+void DinitializeField() {
+  std::cout &lt;&lt; &quot;ptr is at: &quot; &lt;&lt; field.data &lt;&lt; std::endl;
+  // std::cout &lt;&lt; robot &lt;&lt; std::endl;
+
+  // set the image
+  lv_img_set_src(fieldImage, &amp;field);
+  lv_img_set_src(robotImage, &amp;robot);
+
+  // set the position
+  lv_obj_set_pos(fieldImage, 0, 0);
+
+  // text area goes below the field
+  lv_obj_set_pos(textArea, 0, IMAGE_WIDTH);
+
+  // set the size
+  lv_obj_set_size(fieldImage, IMAGE_WIDTH, IMAGE_WIDTH);
+  lv_obj_set_size(robotImage, 15, 15);
+
+  pros::Task fieldTask(DfieldTask);
+  // DfieldTask();
+  // create the task
+//   Task fieldTask(display::fieldTask);
+}</code></pre>
+<h1>./project/src/screen/info.cpp</h1>
+<p><strong>Last commit:</strong> idek (2023-11-15)</p>
+<pre><code class="language-cpp line-numbers">
+// #include &quot;../tasks/tasks.hpp&quot;
+#include &quot;main.h&quot;
+#include &quot;pros/misc.h&quot;
+#include &quot;pros/misc.hpp&quot;
+// #include &quot;screen.hpp&quot;
+
+// text label
+lv_obj_t *informationTextLabel = lv_label_create(lv_scr_act(), NULL);
+
+
+// task
+void DinformationTask() {
+  while (true) {
+    // get the match mode
+    auto status = pros::competition::get_status();
+
+    // to string
+    std::string compStatus =
+        (status == COMPETITION_DISABLED     ? &quot;Disabled&quot;
+         : status == COMPETITION_AUTONOMOUS ? &quot;Autonomous&quot;
+         : status == COMPETITION_CONNECTED  ? &quot;Driver Control&quot;
+                                            : &quot;Unknown&quot;);
+
+    // get the battery level
+    auto battery = pros::battery::get_capacity();
+    pros::Controller master(pros::E_CONTROLLER_MASTER);
+    auto controllerBattery = master.get_battery_capacity();
+    auto isControllerConnected = (master.is_connected() == 0 ? &quot;Disconnected&quot; : master.is_connected() == 1 ? &quot;Connected (wired)&quot; : master.is_connected() == 2 ? &quot;Connected (wireless)&quot; : &quot;Unk&quot;);
+    pros::Motor left_mtr(1);
+    auto motorPos = left_mtr.get_voltage();
+    // auto controllerStatus = pros::E_CONTROLLER_MASTER
+    // turret target angle
+    // auto target = tasks::turretTargetAngle;
+
+    // target speed
+    // auto speed = tasks::flywheelTargetSpeed;
+
+    // build a big string
+    std::string text = &quot;Match Mode: &quot; + compStatus + &quot;\n&quot; +
+                       &quot;Brain Battery: &quot; + std::to_string((int)battery) + &quot;%\n&quot; +
+                       &quot;Controller Battery: &quot; + std::to_string((int) controllerBattery) + &quot;%\n&quot;+ 
+                       &quot;ConStat: &quot; + isControllerConnected + &quot;\n&quot; +
+                    //    &quot;MotorPos: &quot;+ ((char)motorPos) + &quot;\n&quot; + 
+                       &quot;Coded by Saahil (saahild.com)&quot;;
+                    //    &quot;Turret Target: &quot; + std::to_string(target) + &quot;\n&quot; +
+                    //    &quot;Flywheel Target: &quot; + std::to_string(speed) + &quot;\n&quot;;
+
+    // put the information in the text area
+    lv_label_set_text(informationTextLabel, text.c_str());
+
+    // wait
+    pros::delay(100);
+  }
+}
+
+void DinitializeInformation() {
+  // goes to the right of the field
+  lv_obj_set_pos(informationTextLabel, 200, 0);
+  // DinformationTask();
+
+  pros::Task infoTask(DinformationTask);
+
+  // create the task
+//   Task informationTask(display::informationTask);
+}</code></pre>
+<h1>./project/src/screen/logs.cpp</h1>
+<p><strong>Last commit:</strong> feat(screen): updated screen to work properly and throughly (2023-11-18)</p>
+<pre><code class="language-cpp line-numbers">
+// #include &lt;cstddef&gt;
+#include &quot;main.h&quot;
+#include &lt;numeric&gt;
+// #include &lt;string&gt;
+#include &quot;pros/misc.h&quot;
+#include &quot;pros/misc.hpp&quot;
+// std::string logs [2] = {&quot;Volvo&quot;, &quot;BMW&quot;};
+std::vector&lt;std::string&gt; logs = {};
+lv_obj_t *logsLabel = lv_label_create(lv_scr_act(), NULL);
+unsigned int arr_length = 0;
+void DLogsSystem() {
+    // while (true) {
+    // //     for (auto i : logs) {
+    // //     // std::cout &lt;&lt; i &lt;&lt; &#39; &#39;;
+    // // }
+    //  std::string text =logs[0] + &quot;\n&quot;+ logs[1];
+    //                 //    &quot;Turret Target: &quot; + std::to_string(target) + &quot;\n&quot; +
+    //                 //    &quot;Flywheel Target: &quot; + std::to_string(speed) + &quot;\n&quot;;
+
+    // // put the information in the text area
+    // lv_label_set_text(logsLabel, text.c_str());
+    // pros::delay(20);
+    // }
+    // this whole thing broke so i CANT WAIT to find out why
+    while (true) {
+        // error line !!!
+        std::string text = &quot;empt&quot;;
+        std::string a = std::accumulate(logs.begin(), logs.end(), std::string(&quot;&quot;));
+        // std::cout &lt;&lt; a &lt;&lt; std::endl;
+        lv_label_set_text(logsLabel, a.c_str());
+        pros::delay(20);
+    }
+}
+
+
+// append to the logs
+void DAppendLogs(std::string s) {
+    //  std::cout &lt;&lt; &quot;CALLED &quot; &lt;&lt; &quot;func DAppendLogs&quot; &lt;&lt; &#39;\n&#39;;
+    // std::cout &lt;&lt; &quot;CALLED &quot; &lt;&lt; s &lt;&lt; &#39;\n&#39;;
+    // std::cout &lt;&lt; s &lt;&lt; &#39;\n&#39;;
+    //  std::cout &lt;&lt; &#39;CALLED &#39; &lt;&lt; arr_length &lt;&lt; &#39;\n&#39;;
+    //   std::cout &lt;&lt; &#39;CALLED &#39; &lt;&lt; logs &lt;&lt; &#39;\n&#39;;
+   if (arr_length &lt; 2) {
+     logs[arr_length++] = s;
+     std::cout &lt;&lt; s &lt;&lt; &#39;\n&#39;;
+   } else {
+    logs.push_back(logs[1]);
+    logs.push_back(logs[2]);
+    // logs.push_back(s);
+    arr_length = 0;
+   }
+}
+
+void DLogsTask() {
+    lv_obj_set_pos(logsLabel, 205, 115);
+    pros::Task fieldTask(DLogsSystem);
+}
+//~~TODO: UNFINISHED - still todo~~
+// its broken
+</code></pre>
+<h1>./dash/src/index.js</h1>
+<p><strong>Last commit:</strong> Ez Dash done (2023-10-18)</p>
+<pre><code class="language-js line-numbers">
+const express = require(&#39;express&#39;);
+const app = express();
+const port = 3000;
+const path = require(&#39;path&#39;);
+const c = require(&#39;child_process&#39;)
+const fs = require(&#39;fs&#39;)
+const morgan = require(&#39;morgan&#39;);
+const { getProjectPath } = require(&#39;./util&#39;);
+const checkPros = () =&gt; {
+    try {
+       c.execSync(&#39;pros&#39;);
+    } catch (e) {
+        console.log(
+            new Array(10).fill(0).map(() =&gt; &#39; &#39;).join(&#39;&#39;) 
+        );
+console.log(&#39;\nNO PROS INSTALLED\n&#39;)
+
+        console.log(
+            new Array(10).fill(0).map(() =&gt; &#39; &#39;).join(&#39;&#39;) 
+        );
+        process.exit(1)
+   }
+}
+checkPros()
+console.log(`Using project path: ${getProjectPath()}`)
+app.use(morgan(&#39;dev&#39;));
+app.use(express.static(&#39;public&#39;));
+app.set(&#39;views&#39;, path.join(__dirname, &#39;views&#39;));
+app.set(&#39;view engine&#39;, &#39;ejs&#39;);
+app.use(&#39;/api&#39;, require(&#39;./routes/api&#39;));
+app.get(&#39;/&#39;, (req, res) =&gt; res.render(&#39;index&#39;));
+app.listen(port, () =&gt; console.log(`Example app listening on port ${port}!`));
+</code></pre>
+<h1>./dash/src/util.js</h1>
+<p><strong>Last commit:</strong> Ez Dash done (2023-10-18)</p>
+<pre><code class="language-js line-numbers">
+const { execSync } = require(&#39;child_process&#39;);
+const { join, dirname } = require(&#39;path&#39;);
+const checkDebug = (pr1, pr2, pr3) =&gt; {
+    return pr1 || pr2 || pr3
+}
+
+const execCMD = (cmd, ops) =&gt; {
+    // --no-sentry disables prompts
+    const flags = `--no-sentry ${ops.debug ? &#39;--debug&#39; : &#39;&#39;} ${ops.verbose ? &#39;--verbose&#39; : &#39;&#39;}`
+    const out = execSync(`pros ${flags} ${cmd}`, { cwd: ops.cwd || __dirname }).toString()
+    
+    return out;
+}
+const getProjectPath = () =&gt; {
+    return process.env.PROJECT_PATH || join(__dirname,&#39;../..&#39;, &#39;project&#39;)
+}
+
+module.exports = {
+    execCMD, 
+    checkDebug,
+    getProjectPath
+}</code></pre>
+<h1>./dash/src/routes/api.js</h1>
+<p><strong>Last commit:</strong> Ez Dash done (2023-10-18)</p>
+<pre><code class="language-js line-numbers">
+const { execCMD, checkDebug, getProjectPath } = require(&#39;../util&#39;);
+
+const router = require(&#39;express&#39;).Router();
+router.get(&#39;/brains&#39;, (req, res) =&gt; {
+    const rawData = (execCMD(&#39;lsusb&#39;, {
+        debug: checkDebug(req.query.debug, process.env.DEBUG, false), 
+        verbose: checkDebug(req.query.verbose, process.env.DEBUG, false),
+    }).split(&#39;\n&#39;).filter(Boolean));
+if (rawData.every(e =&gt; e.includes(&#39;There are no connected&#39;))) {
+    res.send(&#39;No brains found&#39;);
+    // process.exit();
+    return;
+}
+
+res.send(rawData.join(&#39;\n&#39;))
+})
+
+router.post(&#39;/upload&#39;, (req, res) =&gt; {
+    try {
+        const rawData = (execCMD(&#39;upload&#39;, {
+            debug: checkDebug(req.query.debug, process.env.DEBUG, false), 
+            verbose: checkDebug(req.query.verbose, process.env.DEBUG, false),
+            cwd: getProjectPath()
+        }));
+        res.send(rawData)
+    } catch (e) {
+        res.status(500).send(e.output.map(e =&gt; e ? e.toString() : &#39;&#39;).join(&#39;\n&#39;))
+  }
+})
+router.post(&#39;/make&#39;, (req, res) =&gt; {
+    try {
+        const rawData = (execCMD(&#39;make&#39;, {
+            debug: checkDebug(req.query.debug, process.env.DEBUG, false), 
+            verbose: checkDebug(req.query.verbose, process.env.DEBUG, false),
+            cwd: getProjectPath()
+        }));
+        res.send(rawData)
+    } catch (e) {
+        res.status(500).send(e.output.map(e =&gt; e ? e.toString() : &#39;&#39;).join(&#39;\n&#39;))
+  }
+})
+router.post(&#39;/upload_build&#39;, (req, res) =&gt; {
+    try {
+        const rawData = (execCMD(&#39;make&#39;, {
+            debug: checkDebug(req.query.debug, process.env.DEBUG, false), 
+            verbose: checkDebug(req.query.verbose, process.env.DEBUG, false),
+            cwd: getProjectPath()
+        }));
+        const rawData2 = (execCMD(&#39;upload&#39;, {
+            debug: checkDebug(req.query.debug, process.env.DEBUG, false), 
+            verbose: checkDebug(req.query.verbose, process.env.DEBUG, false),
+            cwd: getProjectPath()
+        }));
+        res.send(rawData + &#39;\n&#39; + rawData2)
+    } catch (e) {
+        res.status(500).send(e.output.map(e =&gt; e ? e.toString() : &#39;&#39;).join(&#39;\n&#39;))
+  }
+})
+module.exports = router;</code></pre>
+<h1>./dash/src/t_/look_for_brains.js</h1>
+<p><strong>Last commit:</strong> Ez Dash done (2023-10-18)</p>
+<pre><code class="language-js line-numbers">
+
+// Path: dash/src/t_/read_brain_data.js
+// Compare this snippet from dash/src/index.js:
+const rawData = (execSync(&#39;pros lsusb&#39;).toString().split(&#39;\n&#39;).filter(Boolean));
+if (rawData.every(e =&gt; e.includes(&#39;There are no connected&#39;))) {
+    console.log(&#39;No brains found&#39;);
+    process.exit();
+}
+
+console.log(rawData)
+
+
+
+</code></pre>
+<h1>./dash/src/views/index.ejs</h1>
+<p><strong>Last commit:</strong> Ez Dash done (2023-10-18)</p>
+<pre><code class="language-ejs line-numbers">
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Vex Robotics dash board&lt;/title&gt;
+
+&lt;link href=&quot;https://cdn.jsdelivr.net/npm/daisyui@3.9.3/dist/full.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@highlightjs/cdn-assets@11.8.0/styles/default.min.css&quot;&gt;
+&lt;script src=&quot;https://unpkg.com/@highlightjs/cdn-assets@11.8.0/highlight.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- and it&#39;s easy to individually load additional languages --&gt;
+&lt;script src=&quot;https://unpkg.com/@highlightjs/cdn-assets@11.8.0/languages/go.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;% 
+    const buttons = [
+    &quot;upload&quot;,
+    &quot;build&quot;,
+    &quot;upload_build&quot;,
+    &quot;list_brains&quot;,
+    ]
+    const b_meta = {
+        &quot;upload&quot;: {
+        title: &quot;Upload&quot;,
+        req: &quot;/api/upload&quot;, 
+    },
+    &quot;build&quot;:  {
+        title: &quot;Build&quot;,
+        req: &quot;/api/build&quot;,
+    },
+    &quot;upload_build&quot;:
+    {
+        title: &quot;Upload &amp; Build&quot;,
+        req: &quot;/api/upload_build&quot;,
+    },
+    &quot;list_brains&quot;: {
+        title: &quot;List Brains&quot;,
+        req: &quot;/api/brains&quot;,
+    },
+}
+    %&gt;
+    &lt;div class=&quot;hero min-h-screen bg-base-200&quot;&gt;
+        &lt;div class=&quot;hero-content text-center&quot;&gt;
+          &lt;div class=&quot;max-w-xl&quot;&gt;
+         
+            &lt;h1 class=&quot;text-5xl font-bold&quot;&gt;Vex bot&lt;/h1&gt;
+            &lt;p class=&quot;py-6&quot;&gt;You should use this if you are my team or if ur the lazy coder.&lt;/p&gt;
+            
+            &lt;div class=&quot;max-w-sm border rounded-lg shadow-lg text-center&quot;&gt;
+                &lt;div class=&quot;form-control&quot;&gt;
+                    &lt;label class=&quot;label cursor-pointer&quot;&gt;
+                      &lt;span class=&quot;label-text&quot;&gt;Debug&lt;/span&gt; 
+                      &lt;input type=&quot;checkbox&quot; name=&#39;debug&#39; id=&#39;debug&#39; class=&quot;checkbox checkbox-primary&quot; /&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;form-control&quot;&gt;
+                    &lt;label class=&quot;label cursor-pointer&quot;&gt;
+                      &lt;span class=&quot;label-text&quot;&gt;Verbose&lt;/span&gt; 
+                      &lt;input type=&quot;checkbox&quot; name=&#39;verbose&#39; id=&#39;verbose&#39; class=&quot;checkbox checkbox-primary&quot; /&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;hr /&gt;
+            &lt;% buttons.forEach(b =&gt; { %&gt;
+             &lt;button class=&quot;btn btn-primary m-4&quot; id=&quot;&lt;%=b%&gt;&quot;&gt;&lt;%=b_meta[b].title%&gt;&lt;/button&gt; 
+            &lt;!-- &lt;button class=&quot;btn btn-primary mb-4&quot;&gt;Upload&lt;/button&gt; --&gt;
+            &lt;!-- &lt;button class=&quot;btn btn-primary&quot;&gt;Build&lt;/button&gt; --&gt;
+            &lt;!-- &lt;button class=&quot;btn btn-primary&quot;&gt;Upload &amp; Build&lt;/button&gt; --&gt;
+            &lt;!-- &lt;button class=&quot;btn btn-primary &quot;&gt;List Brains&lt;/button&gt; --&gt;
+    &lt;% }) %&gt; 
+
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div id=&quot;modals&quot;&gt;
+        &lt;!-- Open the modal using ID.showModal() method --&gt;
+&lt;!-- &lt;button class=&quot;btn&quot; onclick=&quot;my_modal_1.showModal()&quot;&gt;open modal&lt;/button&gt; --&gt;
+&lt;% buttons.forEach(b =&gt; { %&gt;
+    &lt;dialog id=&quot;my_modal_&lt;%=b%&gt;&quot; class=&quot;modal modal-bottom sm:modal-middle&quot;&gt;
+        &lt;div class=&quot;modal-box max-w-5xl&quot;&gt;
+          &lt;h3 id=&quot;my_modal_&lt;%=b%&gt;_title&quot; class=&quot;font-bold text-lg&quot;&gt;&lt;/h3&gt;
+          &lt;p&gt;
+            &lt;pre id=&quot;my_modal_&lt;%=b%&gt;_desc&quot; class=&quot;mockup-code&quot;&gt;
+
+            &lt;/pre&gt;
+          &lt;/p&gt;
+          &lt;div class=&quot;modal-action&quot;&gt;
+            &lt;button class=&quot;btn&quot;  id=&quot;my_modal_&lt;%=b%&gt;_download&quot;&gt;Download&lt;/button&gt;
+            &lt;form method=&quot;dialog&quot;&gt;
+              &lt;!-- if there is a button in form, it will close the modal --&gt;
+              &lt;button class=&quot;btn&quot;&gt;Close&lt;/button&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/dialog&gt;
+    &lt;% }) %&gt; 
+&lt;script&gt;
+    const buttons = &quot;&lt;%= buttons.join(&#39;,,&#39;) %&gt;&quot;.split(&quot;,,&quot;);
+    const b_meta = {
+        &quot;upload&quot;: {
+        title: &quot;Upload&quot;,
+        req: &quot;/api/upload&quot;,
+        method: &quot;POST&quot;
+
+    },
+    &quot;build&quot;:  {
+        title: &quot;Build&quot;,
+        req: &quot;/api/make&quot;,
+        method: &quot;POST&quot;
+
+    },
+    &quot;upload_build&quot;:
+    {
+        title: &quot;Upload &amp; Build&quot;,
+        req: &quot;/api/upload_build&quot;,
+        method: &quot;POST&quot;
+
+    },
+    &quot;list_brains&quot;: {
+        title: &quot;List Brains&quot;,
+        req: &quot;/api/brains&quot;,
+    },
+}
+
+    buttons.forEach((b) =&gt; {
+        const meta = b_meta[b]
+        const modal = document.getElementById(`my_modal_${b}`)
+        const title = document.getElementById(`my_modal_${b}_title`)
+        const desc = document.getElementById(`my_modal_${b}_desc`)
+        const dbtn = document.getElementById(`my_modal_${b}_download`)
+        title.innerHTML = meta.title + &quot; Output&quot;
+        desc.innerHTML = &quot;Loading...&quot;
+        const btn = document.getElementById(b)
+        btn.onclick = async (e) =&gt; {
+            const querys = new URLSearchParams()
+            if(document.getElementById(&#39;verbose&#39;).checked) querys.append(&#39;verbose&#39;, true)
+            if(document.getElementById(&#39;debug&#39;).checked) querys.append(&#39;debug&#39;, true)
+            const fInfo = await fetch(meta.req + `?${querys.toString()}`, {
+                method: meta.method || &quot;GET&quot;
+            })
+            const t = await fInfo.text()
+dbtn.onclick = () =&gt; {
+    const blob = new Blob([t], {
+  type: &quot;application/plain&quot;,
+});
+const a = document.createElement(&quot;a&quot;);
+a.href = URL.createObjectURL(blob);
+a.download = `${meta.title}_output_${Date.now()}.txt`;
+a.click();
+a.remove();
+}
+                desc.innerHTML = 
+                    t.split(&#39;\n&#39;).map((e,i) =&gt; fInfo.status !== 500 ? `&lt;pre data-prefix=&quot;${i}&quot; class=&quot;${e.startsWith(&#39;INFO&#39;) ? `bg-info text-info-content`: e.startsWith(&#39;DEBUG&#39;) ? `bg-primary text-primary-content` : e.startsWith(&#39;ERROR&#39;) ? `bg-error text-error-content` : &#39;&#39;}&quot;&gt;&lt;code&gt;${e}&lt;/code&gt;&lt;/pre&gt;` : `&lt;pre data-prefix=&quot;${i}&quot; class=&quot;${e.startsWith(&#39;INFO&#39;) ? `bg-info text-info-content`: e.startsWith(&#39;DEBUG&#39;) ? `bg-primary text-primary-content` : e.startsWith(&#39;ERROR&#39;) ? `bg-error text-error-content` : &#39;bg-error text-error-content&#39;}&quot;&gt;&lt;code&gt;${e}&lt;/code&gt;&lt;/pre&gt;`).join(&#39;\n&#39;)
+                
+                modal.showModal()
+            
+        }
+        
+    })
+&lt;/script&gt;
+      &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  <!-- PrismJS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-cpp.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</body>
+</html>
