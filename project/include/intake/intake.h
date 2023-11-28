@@ -1,3 +1,3 @@
-void Moveintake();
+void Moveintake()
 
-void StopIntake();
+void StopIntake()
