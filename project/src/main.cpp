@@ -8,6 +8,7 @@
 // #include "okapi/api/device/motor/abstractMotor.hpp"
 #include "okapi/impl/chassis/controller/chassisControllerBuilder.hpp"
 #include "../include/pros/misc.h"
+#include "intake/intake.h"
 // USE https://okapilib.github.io/OkapiLib/md_docs_tutorials_walkthrough_clawbot.html
 // #include <iostream>
 // #include <fstream> 
@@ -116,7 +117,7 @@ void opcontrol() {
 	pros::Motor left_mtr2(2);
 	pros::Motor right_mtr(3);
 	pros::Motor right_mtr2(4);
- 
+	
 
 	while (true) {
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
@@ -132,7 +133,13 @@ void opcontrol() {
 			master.rumble("-");	
 
 		}
+		 if(master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
+			Moveintake();
 
+		} else {
+			// StopIn
+			StopIntake();
+		}
 		left_mtr = -left;
 		left_mtr2 = -left;
 		right_mtr = right;
