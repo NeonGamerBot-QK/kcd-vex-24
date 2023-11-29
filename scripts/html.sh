@@ -7,8 +7,8 @@ FILES=(
   # "README.md"
   "./project/src/*"
   "./project/src/**/*"
-  "./dash/src/*"
-  "./dash/src/**/*"
+  # "./dash/src/*"
+  # "./dash/src/**/*"
 #   "./scripts/*"
 )
 

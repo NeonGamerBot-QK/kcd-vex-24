@@ -129,9 +129,9 @@ void opcontrol() {
 		// chassis->getModel()->tank(left,right);
 		// chassis->getModel()->arcade(left,right);
 		if(master.get_digital(pros::E_CONTROLLER_DIGITAL_A) && master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+			master.rumble(". - .");	
 			autonomous();
 			master.rumble("-");	
-
 		}
 		 if(master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
 			Moveintake();
