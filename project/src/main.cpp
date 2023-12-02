@@ -66,7 +66,7 @@ void initialize() {
  * the robot is enabled, this task will exit.
  */
 void disabled() {
-		pros::lcd::set_text(1, "[disabled]");
+		// pros::lcd::set_text(1, "[disabled]");
 }
 
 /**
@@ -79,7 +79,7 @@ void disabled() {
  * starts.
  */
 void competition_initialize() {
-		pros::lcd::set_text(1, "[init comp]");
+		// pros::lcd::set_text(1, "[init comp]");
 }
 
 /**
@@ -94,7 +94,7 @@ void competition_initialize() {
  * from where it left off.
  */
 void autonomous() {
-		pros::lcd::set_text(1, "[autonomous]");
+		// pros::lcd::set_text(1, "[autonomous]");
 		runAuton();
 }
 
@@ -113,18 +113,22 @@ void autonomous() {
  */
 void opcontrol() {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	pros::Motor left_mtr(1);
-	pros::Motor left_mtr2(2);
-	pros::Motor right_mtr(3);
-	pros::Motor right_mtr2(4);
+	pros::Motor left_mtr(3); // right
+	pros::Motor left_mtr2(4); //left
+	pros::Motor right_mtr(1); // right 
+	pros::Motor right_mtr2(2); //left
 	
 
 	while (true) {
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
 		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
-		int left = master.get_analog(ANALOG_LEFT_Y);
-		int right = master.get_analog(ANALOG_RIGHT_Y);
+		int left = master.get_analog(ANALOG_RIGHT_Y);
+		int right = -master.get_analog(ANALOG_LEFT_Y);
+		std::cout << left_mtr.get_position() << std::endl;
+		std::cout << 'test log' << std::endl;
+	// left_mtr.set_encoder_units(0);
+	// left_mtr.set_position
 		// chassis.moveRaw(left)
 		// chassis->getModel()->tank(left,right);
 		// chassis->getModel()->arcade(left,right);
@@ -140,10 +144,11 @@ void opcontrol() {
 			// StopIn
 			StopIntake();
 		}
-		left_mtr = -left;
-		left_mtr2 = -left;
+		left_mtr = left;
+		left_mtr2 = left;
 		right_mtr = right;
 		right_mtr2 = right;
+		
 		// // x = 
 		// DAppendLogs("for loop thiing"); //broken below
 		// DAppendLogs("for loop thiing2");
