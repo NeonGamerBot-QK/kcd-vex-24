@@ -49,6 +49,7 @@ void initialize() {
 	DinitializeInformation();
 	DinitializeField();
 	DinitializeAutonSelect();
+	// DautonSelectTask();
 	// runAuton();
 	// DLogsTask(); //currently broken
 	//   display::initializeAutonSelect();

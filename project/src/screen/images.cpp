@@ -58,7 +58,7 @@ void DfieldTask() {
 
 
 void DinitializeField() {
-  std::cout << "ptr is at: " << field.data << std::endl;
+  // std::cout << "ptr is at: " << field.data << std::endl;
   // std::cout << robot << std::endl;
 
   // set the image
