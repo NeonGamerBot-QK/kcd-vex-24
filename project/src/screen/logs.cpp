@@ -42,7 +42,7 @@ void DAppendLogs(std::string s) {
     //   std::cout << 'CALLED ' << logs << '\n';
    if (arr_length < 2) {
      logs[arr_length++] = s;
-     std::cout << s << '\n';
+    //  std::cout << s << '\n';
    } else {
     logs.push_back(logs[1]);
     logs.push_back(logs[2]);

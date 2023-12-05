@@ -57,7 +57,7 @@ void DinitializeAutonSelect() {
 
   // set the position
   lv_obj_set_pos(autonMenu, 200, 150);
-  lv_obj_set_pos(resetPositionButton, 204, 90);
+  lv_obj_set_pos(resetPositionButton, 320, 120);
   // lv_obj_set_pos(resetTurretButton, 204, 210);
 
   // set the size

@@ -49,6 +49,17 @@ void initialize() {
 	DinitializeInformation();
 	DinitializeField();
 	DinitializeAutonSelect();
+	std::cout << "\x1B[2J\x1B[H";
+	 std::cout << R"(
+
+.dP"Y8    db       db    88  88 88 88     
+`Ybo."   dPYb     dPYb   88  88 88 88     
+o.`Y8b  dP__Yb   dP__Yb  888888 88 88  .o 
+8bodP' dP""""Yb dP""""Yb 88  88 88 88ood8 
+       
+)" << '\n';
+std::cout << "\033[1;33mMade by saahil (saahild.com) and ran in Pros\033[00m";
+
 	// DautonSelectTask();
 	// runAuton();
 	// DLogsTask(); //currently broken
@@ -126,8 +137,8 @@ void opcontrol() {
 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
 		int left = master.get_analog(ANALOG_RIGHT_Y);
 		int right = -master.get_analog(ANALOG_LEFT_Y);
-		std::cout << left_mtr.get_position() << std::endl;
-		std::cout << 'test log' << std::endl;
+		// std::cout << left_mtr.get_position() << std::endl;
+		// std::cout << 'test log' << std::endl;
 	// left_mtr.set_encoder_units(0);
 	// left_mtr.set_position
 		// chassis.moveRaw(left)
