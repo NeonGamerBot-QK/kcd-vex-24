@@ -4,6 +4,7 @@
 #include "screen/logs.hpp"
 #include "auton/auton.hpp"
 #include "screen/auton_select.hpp"
+#include "outtake/Outtake.hpp"
 // #include "test.cpp"
 // #include "okapi/api/device/motor/abstractMotor.hpp"
 #include "okapi/impl/chassis/controller/chassisControllerBuilder.hpp"
@@ -155,6 +156,11 @@ void opcontrol() {
 		} else {
 			// StopIn
 			StopIntake();
+		}
+		if(master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
+			MoveOuttake();
+		} else {
+			StopOuttake();
 		}
 		left_mtr = left;
 		left_mtr2 = left;

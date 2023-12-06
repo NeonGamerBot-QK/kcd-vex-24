@@ -1,0 +1,2 @@
+void MoveOuttake();
+void StopOuttake();

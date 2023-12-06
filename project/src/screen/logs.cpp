@@ -4,6 +4,7 @@
 // #include <string>
 #include "pros/misc.h"
 #include "pros/misc.hpp"
+#include <string>
 // std::string logs [2] = {"Volvo", "BMW"};
 std::vector<std::string> logs = {};
 lv_obj_t *logsLabel = lv_label_create(lv_scr_act(), NULL);

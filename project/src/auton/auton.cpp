@@ -1,9 +1,16 @@
 #include "main.h"
 #include "auton/DriveTrain.hpp"
 #include "intake/intake.h"
+#include "outtake/Outtake.hpp"
 #include <iostream>
 pros::Motor right_mtr(1);
 int autonMode = -1;
+void resetAuton() {
+   StopIntake();
+   brake();
+   StopOuttake();
+    pros::delay(20);
+}
 void runAuton() {
 // right_mtr = 127;
 // pros::delay(500);
@@ -28,23 +35,29 @@ if (autonMode == -1) {
     brake();
 } else if(autonMode == 0) {
     std::cout << "Red" << std::endl;
-
 moveForward();
+pros::delay(1500);
+    brake();
+MoveRight();
 pros::delay(500);
     brake();
+    MoveOuttake();
+    pros::delay(1000);
+resetAuton();
+    // brake();
 } else if(autonMode == 1){
     std::cout << "Blue" << std::endl;
 
-   moveBack();
-    pros::delay(500);
+ moveForward();
+pros::delay(1500);
     brake();
-} else if(autonMode == 2){
-    std::cout << "Skills" << std::endl;
-
-    MoveRight();
-    pros::delay(500);
+MoveLeft();
+pros::delay(500);
     brake();
-} else {
+    MoveOuttake();
+    pros::delay(1000);
+resetAuton();
+}  else {
     brake();
 }
 pros::delay(500);
@@ -52,11 +65,7 @@ pros::delay(500);
 }
 
 
-void resetAuton() {
-   StopIntake();
-   brake();
-    pros::delay(20);
-}
+
 
 void setAutonMode(int mode) {
     autonMode = mode;
