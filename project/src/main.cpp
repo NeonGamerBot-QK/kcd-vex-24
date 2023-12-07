@@ -150,9 +150,14 @@ void opcontrol() {
 			autonomous();
 			master.rumble("-");	
 		}
-		 if(master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
+		 if(master.get_digital(pros::E_CONTROLLER_DIGITAL_B) || master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+			 ReverseIntake();
+		}
+		if(master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
 			Moveintake();
 
+		}
 		} else {
 			// StopIn
 			StopIntake();
