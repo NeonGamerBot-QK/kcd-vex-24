@@ -35,27 +35,34 @@ if (autonMode == -1) {
     brake();
 } else if(autonMode == 0) {
     std::cout << "Red" << std::endl;
-moveForward();
-pros::delay(1500);
-    brake();
-MoveRight();
-pros::delay(500);
-    brake();
     MoveOuttake();
+    moveForward();
     pros::delay(1000);
+    brake();
+    MoveRight();
+    pros::delay(500);
+    moveForward();
+    pros::delay(500);
+// moveForward();
+// pros::delay(1500);
+//     brake();
+// MoveRight();
+// pros::delay(500);
+//     brake();
+//     MoveOuttake();
+//     pros::delay(1000);
 resetAuton();
     // brake();
 } else if(autonMode == 1){
     std::cout << "Blue" << std::endl;
-
- moveForward();
-pros::delay(1500);
-    brake();
-MoveLeft();
-pros::delay(500);
-    brake();
-    MoveOuttake();
+ MoveOuttake();
+    moveForward();
     pros::delay(1000);
+    brake();
+    MoveLeft();
+    pros::delay(700);
+    moveForward();
+    pros::delay(500);
 resetAuton();
 }  else {
     brake();
