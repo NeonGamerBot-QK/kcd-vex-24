@@ -1,2 +1,2 @@
 #include "main.h"
-#include "config.h"
+#include "./config.hpp"
