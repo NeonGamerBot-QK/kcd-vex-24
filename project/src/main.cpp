@@ -1,4 +1,6 @@
 #include "main.h"
+// #include "lemlib/"
+#include "lemlib/api.hpp"
 #include "screen/info.hpp"
 #include "screen/images.hpp"
 #include "screen/logs.hpp"
