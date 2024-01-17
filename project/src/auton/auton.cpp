@@ -29,13 +29,19 @@ void runAuton() {
 // StopIntake();
 if (autonMode == -1) {
     std::cout << "No Side Selected or Changed at all!!" << std::endl;
-
     Spin();
     pros::delay(500);
     brake();
 } else if(autonMode == 0) {
     std::cout << "Red" << std::endl;
-    MoveOuttake();
+    // MoveOuttake();
+    moveForward();
+    pros::delay(500);
+    MoveLeft();
+    pros::delay(500);
+    brake();
+    // TODO Move catapult to laucnh matchload in air
+    pros::delay(2000);
     moveForward();
     pros::delay(1000);
     brake();
@@ -43,6 +49,8 @@ if (autonMode == -1) {
     pros::delay(500);
     moveForward();
     pros::delay(500);
+
+
 // moveForward();
 // pros::delay(1500);
 //     brake();
