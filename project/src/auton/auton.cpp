@@ -1,4 +1,5 @@
 #include "main.h"
+#include "auton/Catapult.hpp"
 #include "auton/DriveTrain.hpp"
 #include "intake/intake.h"
 #include "outtake/Outtake.hpp"
@@ -34,21 +35,33 @@ if (autonMode == -1) {
     brake();
 } else if(autonMode == 0) {
     std::cout << "Red" << std::endl;
-    // MoveOuttake();
+    CForward();
+    pros::delay(1500);
+    Cstop();
     moveForward();
-    pros::delay(500);
-    MoveLeft();
-    pros::delay(500);
-    brake();
-    // TODO Move catapult to laucnh matchload in air
-    pros::delay(2000);
-    moveForward();
-    pros::delay(1000);
+    pros::delay(1700);
     brake();
     MoveRight();
-    pros::delay(500);
+    pros::delay(700);
+    brake();
     moveForward();
-    pros::delay(500);
+    pros::delay(700);
+    brake();
+    // MoveOuttake();
+    // moveForward();
+    // pros::delay(500);
+    // MoveLeft();
+    // pros::delay(500);
+    // brake();
+    // // TODO Move catapult to laucnh matchload in air
+    // pros::delay(2000);
+    // moveForward();
+    // pros::delay(1000);
+    // brake();
+    // MoveRight();
+    // pros::delay(500);
+    // moveForward();
+    // pros::delay(500);
 
 
 // moveForward();

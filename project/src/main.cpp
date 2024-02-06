@@ -132,6 +132,7 @@ void opcontrol() {
 	pros::Motor left_mtr2(3); //left
 	pros::Motor right_mtr(2); // right 
 	pros::Motor right_mtr2(4); //left
+	pros::Motor outtake2(10);
 	
 
 	while (true) {
@@ -140,6 +141,7 @@ void opcontrol() {
 	//	                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
 		int left = -master.get_analog(ANALOG_LEFT_Y);
 		int right = -master.get_analog(ANALOG_RIGHT_Y);
+		
 		// std::cout << left_mtr.get_position() << std::endl;
 		// std::cout << 'test log' << std::endl;
 	// left_mtr.set_encoder_units(0);
@@ -165,11 +167,15 @@ if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
 			StopIntake();
 			StopOuttake();
 		}
-		// if(master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
-		// 	MoveOuttake();
-		// } else {
-		// 	StopOuttake();
-		// }
+		if(master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
+			// MoveOuttake();
+			outtake2 = 127;
+		} else {
+			// StopOuttake();
+			outtake2 = 0;
+
+		}
+
 		left_mtr = left;
 		left_mtr2 = left;
 		right_mtr = -right;
