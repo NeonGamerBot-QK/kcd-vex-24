@@ -36,16 +36,16 @@ if (autonMode == -1) {
 } else if(autonMode == 0) {
     std::cout << "Red" << std::endl;
     CForward();
-    pros::delay(1500);
+    pros::delay(800);
     Cstop();
     moveForward();
-    pros::delay(1700);
+    pros::delay(800);
     brake();
     MoveRight();
-    pros::delay(700);
+    pros::delay(800);
     brake();
     moveForward();
-    pros::delay(700);
+    pros::delay(500);
     brake();
     // MoveOuttake();
     // moveForward();

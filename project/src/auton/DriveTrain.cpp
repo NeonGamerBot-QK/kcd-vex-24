@@ -8,10 +8,10 @@ void drive(int left, int right) {
 	pros::Motor right_mtr(2); // right 
 	pros::Motor right_mtr2(4); //left
 	
-    	left_mtr = -left;
-		left_mtr2 = -left;
-		right_mtr = -right;
-		right_mtr2 = -right;
+    	left_mtr = left;
+		left_mtr2 = left;
+		right_mtr = right;
+		right_mtr2 = right;
 }
 void moveForward() {
     drive(127,-127);
