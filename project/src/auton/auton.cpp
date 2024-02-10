@@ -41,7 +41,7 @@ if (autonMode == -1) {
     moveForward();
     pros::delay(800);
     brake();
-    MoveRight();
+    MoveLeft();
     pros::delay(800);
     brake();
     moveForward();
@@ -76,14 +76,18 @@ resetAuton();
     // brake();
 } else if(autonMode == 1){
     std::cout << "Blue" << std::endl;
- MoveOuttake();
+ CForward();
+    pros::delay(800);
+    Cstop();
     moveForward();
-    pros::delay(1000);
+    pros::delay(800);
     brake();
-    MoveLeft();
-    pros::delay(700);
+    MoveRight();
+    pros::delay(800);
+    brake();
     moveForward();
     pros::delay(500);
+    brake();
 resetAuton();
 }  else {
     brake();
