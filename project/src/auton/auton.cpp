@@ -89,7 +89,27 @@ resetAuton();
     pros::delay(500);
     brake();
 resetAuton();
-}  else {
+} else if (autonMode == 2) {
+// Skills :)
+moveBack();
+pros::delay(500);
+brake();
+CForward();
+pros::delay(50000);
+Cstop();
+MoveRight();
+brake();
+pros::delay(500);
+brake();
+moveForward();
+pros::delay(1500);
+MoveLeft();
+Moveintake();
+pros::delay(2500);
+brake();
+StopIntake();
+}
+ else {
     brake();
 }
 pros::delay(500);

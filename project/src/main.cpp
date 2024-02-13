@@ -129,9 +129,9 @@ void autonomous() {
 void opcontrol() {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 	pros::Motor left_mtr(1); // right
-	pros::Motor left_mtr2(3); //left
-	pros::Motor right_mtr(2); // right 
-	pros::Motor right_mtr2(4); //left
+	pros::Motor left_mtr2(4); //left
+	pros::Motor right_mtr(1); // right 
+	pros::Motor right_mtr2(2); //left
 	pros::Motor outtake2(10);
 	
 
