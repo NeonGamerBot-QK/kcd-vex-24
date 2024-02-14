@@ -141,7 +141,7 @@ void opcontrol() {
 	//	                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
 		int left = -master.get_analog(ANALOG_RIGHT_Y);
 		int right = -master.get_analog(ANALOG_LEFT_Y);
-		
+// pros::Motor intake_mtr (6);
 		// std::cout << left_mtr.get_position() << std::endl;
 		// std::cout << 'test log' << std::endl;
 	// left_mtr.set_encoder_units(0);
@@ -154,20 +154,23 @@ void opcontrol() {
 			autonomous();
 			master.rumble("-");	
 		}
-		 if(master.get_digital(pros::E_CONTROLLER_DIGITAL_A) || master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+		 if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1) || master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
 if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+			// Moveintake();
+			// intake_mtr = -127;
+Moveintake();
+		}else {
+		// if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+			// MoveOuttake();
 			 ReverseIntake();
+
 		}
-		if(master.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
-			Moveintake();
-			MoveOuttake();
-		}
-		} else {
+		} else { 
 			// StopIn
 			StopIntake();
-			StopOuttake();
+			// StopOuttake();
 		}
-		if(master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
+		if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
 			// MoveOuttake();
 			outtake2 = 127;
 		} else {
