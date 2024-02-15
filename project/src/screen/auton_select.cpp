@@ -2,6 +2,8 @@
 // #include "../config/config.hpp"
 #include "main.h"
 #include "auton/auton.hpp"
+#include <iostream>
+#include <unistd.h>
 // #include "screen.hpp"
 
 // create the menu
@@ -12,6 +14,9 @@ lv_style_t style_list;
 lv_obj_t *resetPositionButton = lv_btn_create(lv_scr_act(), NULL);
 lv_obj_t *resetPositionLabel = lv_label_create(resetPositionButton, NULL);
 
+// startAuton button 
+lv_obj_t *startAutonButton = lv_btn_create(lv_scr_act(), NULL);
+lv_obj_t *StartAutonLabel = lv_label_create(startAutonButton, NULL);
 // reset turret button
 // lv_obj_t *resetTurretButton = lv_btn_create(lv_scr_act(), NULL);
 // lv_obj_t *resetTurretLabel = lv_label_create(resetTurretButton, NULL);
@@ -21,6 +26,16 @@ static lv_res_t resetPositionCallback(lv_obj_t *btn) {
   // reset the position
  resetAuton();
 
+  // return
+  return LV_RES_OK;
+}
+static lv_res_t startAuton(lv_obj_t *btn) {
+  // reset the position
+//  resetAuton();
+// autonomous();
+// sleep(3);
+pros::delay(3000);
+autonomous();
   // return
   return LV_RES_OK;
 }
@@ -53,11 +68,13 @@ void DinitializeAutonSelect() {
   lv_ddlist_set_options(autonMenu, "Red Side\nBlue side\nSkills\nNone");
   // set the button text
   lv_label_set_text(resetPositionLabel, "Reset Position");
+  lv_label_set_text(StartAutonLabel, "Start Auton.");
   // lv_label_set_text(resetTurretLabel, "Reset Turret");
 
   // set the position
   lv_obj_set_pos(autonMenu, 200, 150);
   lv_obj_set_pos(resetPositionButton, 320, 120);
+  lv_obj_set_pos(startAutonButton, 220, 120);
   // lv_obj_set_pos(resetTurretButton, 204, 210);
 
   // set the size
@@ -77,6 +94,10 @@ void DinitializeAutonSelect() {
   // on click
   lv_btn_set_action(resetPositionButton, LV_BTN_ACTION_CLICK,
                     resetPositionCallback);
+
+   lv_btn_set_action(startAutonButton, LV_BTN_ACTION_CLICK,
+                    startAuton);
+                    
 //   lv_btn_set_action(resetTurretButton, LV_BTN_ACTION_CLICK,
                     // resetTurretCallback);
 

@@ -3,27 +3,27 @@
 
 
 void drive(int left, int right) {
-	pros::Motor left_mtr(1); // right
-	pros::Motor left_mtr2(3); //left
-	pros::Motor right_mtr(2); // right 
+    pros::Motor left_mtr(1); // right CATA
+	pros::Motor left_mtr2(3); // RIGHT B CATA
+	pros::Motor right_mtr(2); // LEFT 
 	pros::Motor right_mtr2(4); //left
 	
     	left_mtr = left;
 		left_mtr2 = left;
-		right_mtr = right;
-		right_mtr2 = right;
+		right_mtr = -right;
+		right_mtr2 = -right;
 }
 void moveForward() {
-    drive(127,-127);
+    drive(-127,-127);
 }
 void moveBack() {
-    drive(-127,127);
+    drive(127,127);
 }
 void MoveRight() {
     drive(0,-127);
 }
 void MoveLeft() {
-    drive(127,0);
+    drive(-127,0);
 }
 void Spin() {
     drive(127,127);

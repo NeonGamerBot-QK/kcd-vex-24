@@ -141,6 +141,8 @@ void opcontrol() {
 	//	                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
 		int left = -master.get_analog(ANALOG_RIGHT_Y);
 		int right = -master.get_analog(ANALOG_LEFT_Y);
+		std::cout << std::to_string((int)left) << std::endl;
+		std::cout << std::to_string((int)right) << std::endl;
 // pros::Motor intake_mtr (6);
 		// std::cout << left_mtr.get_position() << std::endl;
 		// std::cout << 'test log' << std::endl;

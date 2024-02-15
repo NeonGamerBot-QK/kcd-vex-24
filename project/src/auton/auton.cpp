@@ -35,35 +35,29 @@ if (autonMode == -1) {
     brake();
 } else if(autonMode == 0) {
     std::cout << "Red" << std::endl;
-    CForward();
-    pros::delay(800);
-    Cstop();
-    moveForward();
-    pros::delay(800);
-    brake();
-    MoveLeft();
-    pros::delay(800);
-    brake();
-    moveForward();
-    pros::delay(500);
-    brake();
-    // MoveOuttake();
-    // moveForward();
-    // pros::delay(500);
-    // MoveLeft();
-    // pros::delay(500);
-    // brake();
-    // // TODO Move catapult to laucnh matchload in air
-    // pros::delay(2000);
-    // moveForward();
-    // pros::delay(1000);
-    // brake();
-    // MoveRight();
-    // pros::delay(500);
-    // moveForward();
-    // pros::delay(500);
-
-
+    // red side, push matchload into goal then get one of the balls on the field into the goal  - 15s
+   moveForward();
+   pros::delay(2000);
+//    brake();
+//    moveBack();
+//    MoveLeft();
+//    pros::delay(1500);
+//    brake();
+// moveForward();
+// pros::delay(1700);
+// brake();
+// MoveLeft();
+// pros::delay(800);
+// brake();
+// moveForward();
+// pros::delay(400);
+// MoveLeft();
+// pros::delay(600);
+// brake();
+// moveForward();
+// pros::delay(700);
+brake();
+// done (this is the first edit)
 // moveForward();
 // pros::delay(1500);
 //     brake();
@@ -77,7 +71,7 @@ resetAuton();
 } else if(autonMode == 1){
     std::cout << "Blue" << std::endl;
  CForward();
-    pros::delay(800);
+    pros::delay(1200);
     Cstop();
     moveForward();
     pros::delay(800);
