@@ -192,6 +192,7 @@ Moveintake();
 		// DAppendLogs("for loop thiing3");
 		// DAppendLogs("for loop thiing4");
 		
-		pros::delay(10);
+		pros::delay(15);
 	}
 }
+  
